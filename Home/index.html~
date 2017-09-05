@@ -21,7 +21,7 @@
 		<div data-role="header" position:absolute top:0px display:inline>
 			<h1> <font size="6">Find-A-Rail</font></h1>
 		</div>
-	<body> #onload=getLocData>
+	<body bgcolor="#E6E6FA"> #onload=getLocData>
 		<textarea id="loc"></textarea>
 		<button type="button" onclick="send request to server">Location Data is Incorrect</button>
 		<br />
@@ -32,9 +32,7 @@
 		<button type="button" onclick="send request to server">Route</button>
 		<br />
 	</body>
-	<h1>
 		<div data-role="footer">
-			CS 275
+			<h1><font size="6">CS 275</font></h1>
 		</div>
-	</h1>
 </html>
