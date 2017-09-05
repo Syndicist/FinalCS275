@@ -32,7 +32,9 @@
 		<button type="button" onclick="send request to server">Route</button>
 		<br />
 	</body>
+	<h1>
 		<div data-role="footer">
-			<h1><font size="6">CS 275</font></h1>
+			CS 275
 		</div>
+	</h1>
 </html>
