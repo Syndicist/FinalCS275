@@ -1,0 +1,43 @@
+<html> 
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+		</script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js">
+		</script>
+		<link type="text/css" rel="stylesheet"
+			href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css"/>
+		<script type="text/Javascript">
+			function getLocData()
+			{
+				//Get current location address from Google API and
+				//set it as id "loc"
+			}
+		</script>
+	</head>
+		<h1>
+		<div data-role="header">
+			Find-A-Rail
+		</div>
+		</h1>
+	<body>
+		<textarea id="loc"></textarea>
+		<br />
+		window.onload = getLocData;
+		
+		<div id="route"></div>
+		<br />
+		
+		<textarea placeholder="Type your destination" id="dest"></textarea>
+		<br />
+		
+		<button type="button" onclick="send request to server">
+			Route
+		</button>
+		<br />
+	</body>
+	<h1>
+		<div data-role="footer">
+			CS 275
+		</div>
+	</h1>
+</html>
