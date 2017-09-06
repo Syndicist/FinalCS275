@@ -1,5 +1,6 @@
 <html> 
 	<head>
+		<link rel="stylesheet" href="styles.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
 		</script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js">
@@ -9,19 +10,40 @@
 		<script type="text/Javascript">
 			function getLocData()
 			{
-				//Get current location address from Google API and
-				//set it as id "loc"
+				//This is supposed to get initial location data but I don't see a request
+				//I can make for that on the server?
+				/*var URL = 
+				 $.ajax({
+					type: "GET",
+					url: URL,
+					dataType: "text",
+					success: function(ans) {
+						document.getElementById('loc').innerHTML = ans;
+					}
+				});*/
 			}
 			function incorrectLoc()
 			{
 			 
 			}
+			function getRoute()
+			{
+				var URL = "./route?loc="+document.getElementById('loc').value+"&"+"dest="+document.getElementById('dest').value;
+				 $.ajax({
+					type: "GET",
+					url: URL,
+					dataType: "text",
+					success: function(ans) {
+						document.getElementById('route').innerHTML = ans;
+					}
+				});
 		</script>
 	</head>
+
 		<div data-role="header" position:absolute top:0px display:inline>
 			<h1> <font size="6">Find-A-Rail</font></h1>
 		</div>
-	<body> #onload=getLocData>
+	<body onload="getLocData()">
 		<textarea id="loc"></textarea>
 		<button type="button" onclick="send request to server">Location Data is Incorrect</button>
 		<br />
@@ -29,7 +51,7 @@
 		<br />
 		<textarea placeholder="Type your destination" id="dest"></textarea>
 		<br />
-		<button type="button" onclick="send request to server">Route</button>
+		<button type="button" class="button" onclick="send request to server">Route</button>
 		<br />
 	</body>
 		<div data-role="footer">
