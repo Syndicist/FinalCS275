@@ -14,7 +14,7 @@
 				 $.ajax({
 					type: "GET",
 					url: URL,
-					dataType: "jsonp",
+					dataType: "json",
 					success: function(msg) {
 					var str = "<table data-role='table' class='ui-responsive'><thead><tr><th>Overall Distance</th><th>Departure Address</th><th>Departure Time</th><th>Arrival Time</th><th>Instructions</th></tr></thead><tbody>";
 					$.each(msg.legs, function(i, item){

@@ -11,13 +11,15 @@ var con = mysql.createConnection({
         database: 'hw5'
     });
 
-var gApiKey = '\&key=' + fs.readFileSync('../gmaps_key','utf8');
+var gApiKey = '\&key=' + fs.readFileSync('./gmaps_key','utf8');
 var GoogleMaps = require('@google/maps').createClient({key: gApiKey});
 	
 	
 app.use(express.static("./Home"));
 
-app.listen(8080);
+app.listen(8080, function() {
+	console.log('Server is initialized...');
+});
 
 app.get('/', function (req, res){
         var data = fs.readFileSync('./index.html','utf8');
@@ -35,7 +37,7 @@ app.get('/route', function(req, res){
 	https.request(options, function(resp) {
 		var out = '';
 		resp.on('data', function(chunk){out += chunk;});
-		resp.on('end', function() {res.send(JSON.parse(out));});
+		resp.on('end', function() {res.send(out);});
 	}).end();
 		
 	
