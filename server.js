@@ -17,7 +17,9 @@ var GoogleMaps = require('@google/maps').createClient({key: gApiKey});
 	
 app.use(express.static("./Home"));
 
-app.listen(8080);
+app.listen(8080, function() {
+	console.log('Server is initialized...');
+});
 
 app.get('/', function (req, res){
         var data = fs.readFileSync('./index.html','utf8');
