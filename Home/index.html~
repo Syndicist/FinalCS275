@@ -1,5 +1,6 @@
 <html> 
 	<head>
+		<link rel="stylesheet" href="styles.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
 		</script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js">
@@ -7,32 +8,39 @@
 		<link type="text/css" rel="stylesheet"
 			href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css"/>
 		<script type="text/Javascript">
-			function getLocData()
+			function getRoute()
 			{
-				//Get current location address from Google API and
-				//set it as id "loc"
-			}
-			function incorrectLoc()
-			{
-			 
-			}
+				var URL = "./route?origin="+document.getElementById('loc').value+"&"+"destination="+document.getElementById('dest').value;
+				 $.ajax({
+					type: "GET",
+					url: URL,
+					dataType: "jsonp",
+					success: function(msg) {
+					var str = "<table data-role='table' class='ui-responsive'><thead><tr><th>Overall Distance</th><th>Departure Address</th><th>Departure Time</th><th>Arrival Time</th><th>Instructions</th></tr></thead><tbody>";
+					$.each(msg.legs, function(i, item){
+						str = str + "<tr><td>" + item.distance.text + "</td><td>" + item.start_addtress + "</td><td>" + item.end_address + "</td><td>" + item.arrival_time.text + " " + item.arrival_time.time_zone + "</td><td>" + item.steps.html_instructions + "</td></tr>";
+					});
+					str += "</tbody></table>";
+					document.getElementById("route").innerHTML=str;
+					}
+				});
 		</script>
 	</head>
-		<div data-role="header" position:absolute top:0px display:inline>
+
+		<div data-role="header" data-position="fixed">
 			<h1> <font size="6">Find-A-Rail</font></h1>
 		</div>
-	<body bgcolor="#E6E6FA"> #onload=getLocData>
-		<textarea id="loc"></textarea>
-		<button type="button" onclick="send request to server">Location Data is Incorrect</button>
+	<body>
+		<textarea placeholder="Type your current location" id="loc"></textarea>
 		<br />
-		<div id="route"></div>
+		<div type="div" class="div" id="route"></div>
 		<br />
 		<textarea placeholder="Type your destination" id="dest"></textarea>
 		<br />
-		<button type="button" onclick="send request to server">Route</button>
+		<button type="button" class="button" onclick="getRoute()">Route</button>
 		<br />
 	</body>
-		<div data-role="footer">
+		<div data-role="footer" data-position="fixed">
 			<h1><font size="6">CS 275</font></h1>
 		</div>
 </html>

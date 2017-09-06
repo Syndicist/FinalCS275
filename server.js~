@@ -11,7 +11,7 @@ var con = mysql.createConnection({
         database: 'hw5'
     });
 
-var gApiKey = '\&key=' + fs.readFileSync('../gmaps_key','utf8');
+var gApiKey = '\&key=' + fs.readFileSync('./gmaps_key','utf8');
 var GoogleMaps = require('@google/maps').createClient({key: gApiKey});
 	
 	
