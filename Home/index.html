@@ -16,9 +16,9 @@
 					url: URL,
 					dataType: "jsonp",
 					success: function(msg) {
-					var str = "<table data-role='table' class='ui-responsive'><thead><tr><th>Overall Distance</th><th>Departure Address</th><th>Departure Time</th><th>Arrival Time</th></tr></thead><tbody>";
+					var str = "<table data-role='table' class='ui-responsive'><thead><tr><th>Overall Distance</th><th>Departure Address</th><th>Departure Time</th><th>Arrival Time</th><th>Instructions</th></tr></thead><tbody>";
 					$.each(msg.legs, function(i, item){
-						str = str + "<tr><td>" + item.distance.text + "</td><td>" + item.start_addtress + "</td><td>" + item.end_address + "</td><td>" + item.arrival_time.text + " " + item.arrival_time.time_zone + "</td></tr>";
+						str = str + "<tr><td>" + item.distance.text + "</td><td>" + item.start_addtress + "</td><td>" + item.end_address + "</td><td>" + item.arrival_time.text + " " + item.arrival_time.time_zone + "</td><td>" + item.steps.html_instructions + "</td></tr>";
 					});
 					str += "</tbody></table>";
 					document.getElementById("route").innerHTML=str;
