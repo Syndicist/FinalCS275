@@ -29,13 +29,13 @@ app.get('/route', function(req, res){
 	console.log("Received request for train directions.");
 	var options = {
 				host: 'maps.googleapis.com',
-				path: '/api/directions/json?origin=' + req.query.origin +'&destination=' + req.query.destination + '&mode=transit&transit_mode=rail&transit_routing_preference=less_walking' + '&key='+ gApiKey ;
+				path: '/api/directions/json?origin=' + req.query.origin +'&destination=' + req.query.destination + '&mode=transit&transit_mode=rail&transit_routing_preference=less_walking' + '&key='+ gApiKey
 	};
 	
 	https.request(options, function(resp) {
 		var out = '';
 		resp.on('data', function(chunk){out += chunk;});
-		resp.on('end', function() {/*needs to be impelented. json parsed to string, etc*/});
+		resp.on('end', function() {res.send(JSON.parse(out));});
 	}).end();
 		
 	
