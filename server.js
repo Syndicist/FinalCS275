@@ -37,7 +37,7 @@ app.get('/route', function(req, res){
 	https.request(options, function(resp) {
 		var out = '';
 		resp.on('data', function(chunk){out += chunk;});
-		resp.on('end', function() {res.send(JSON.parse(out));});
+		resp.on('end', function() {res.send(out);});
 	}).end();
 		
 	
