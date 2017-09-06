@@ -11,7 +11,7 @@ var con = mysql.createConnection({
         database: 'hw5'
     });
 
-var gApiKey = fs.readFileSync('./gmaps_key','utf8');
+var gApiKey = '\&key=' + fs.readFileSync('./gmaps_key','utf8');
 var GoogleMaps = require('@google/maps').createClient({key: gApiKey});
 	
 	
@@ -29,7 +29,7 @@ app.get('/route', function(req, res){
 	console.log("Received request for train directions.");
 	var options = {
 				host: 'maps.googleapis.com',
-				path: '/api/directions/json?' + req.query.info
+				path: '/api/directions/json?' + req.query.info + gApiKey;
 	};
 	
 	https.request(options, function(resp) {
