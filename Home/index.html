@@ -8,27 +8,13 @@
 		<link type="text/css" rel="stylesheet"
 			href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css"/>
 		<script type="text/Javascript">
-			function getLocData()
-			{
-				//This is supposed to get initial location data but I don't see a request
-				//I can make for that on the server?
-				/*var URL = 
-				 $.ajax({
-					type: "GET",
-					url: URL,
-					dataType: "text",
-					success: function(ans) {
-						document.getElementById('loc').innerHTML = ans;
-					}
-				});*/
-			}
 			function getRoute()
 			{
 				var URL = "./route?loc="+document.getElementById('loc').value+"&"+"dest="+document.getElementById('dest').value;
 				 $.ajax({
 					type: "GET",
 					url: URL,
-					dataType: "text",
+					dataType: "json",
 					success: function(ans) {
 						document.getElementById('route').innerHTML = ans;
 					}
@@ -39,9 +25,8 @@
 		<div data-role="header" position:absolute top:0px display:inline>
 			<h1> <font size="6">Find-A-Rail</font></h1>
 		</div>
-	<body onload="getLocData()">
-		<textarea id="loc"></textarea>
-		<div>This is your current location. You may change it to your satisfaction.</div>
+	<body>
+		<textarea placeholder="Type your current location" id="loc"></textarea>
 		<br />
 		<div type="div" class="div" id="route"></div>
 		<br />
