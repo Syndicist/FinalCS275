@@ -31,7 +31,7 @@ app.get('/route', function(req, res){
 	console.log("Received request for train directions.");
 	var options = {
 				host: 'maps.googleapis.com',
-				path: '/api/directions/json?origin=' + req.query.origin +'&destination=' + req.query.destination + '&mode=transit&transit_mode=rail&transit_routing_preference=less_walking' + '&key='+ gApiKey
+				path: '/maps/api/directions/json?origin=' + req.query.origin +'&destination=' + req.query.destination + '&mode=transit&transit_mode=rail&transit_routing_preference=less_walking' + gApiKey
 	};
 	
 	https.request(options, function(resp) {
