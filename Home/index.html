@@ -10,11 +10,11 @@
 		<script type="text/Javascript">
 			function getRoute()
 			{
-				var URL = "./route?loc="+document.getElementById('loc').value+"&"+"dest="+document.getElementById('dest').value;
+				var URL = "./route?origin="+document.getElementById('loc').value+"&"+"destination="+document.getElementById('dest').value;
 				 $.ajax({
 					type: "GET",
 					url: URL,
-					dataType: "json",
+					dataType: "jsonp",
 					success: function(ans) {
 						document.getElementById('route').innerHTML = ans;
 					}
