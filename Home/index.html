@@ -14,9 +14,10 @@
 				 $.ajax({
 					type: "GET",
 					url: URL,
-					dataType: "text",
+					dataType: "json",
 					success: function(msg) {
-					document.getElementById("route").innerHTML = msg;
+					console.log(msg.routes[0].legs[0].arrival_time.text);
+					document.getElementById("route").innerHTML = msg.routes[0].legs[0].arrival_time.text;
 					/*
 					var str = "<table data-role='table' class='ui-responsive'><thead><tr><th>Overall Distance</th><th>Departure Address</th><th>Departure Time</th><th>Arrival Time</th><th>Instructions</th></tr></thead><tbody>";
 					$.each(msg.legs, function(i, item){
@@ -24,6 +25,9 @@
 					});
 					str += "</tbody></table>";
 					document.getElementById("route").innerHTML=str;*/
+					},
+					error: function(jgXHR, textStatus, errorThrown){ // If not, we throw the generic error that caused it to fail
+						alert("Error: " + textStatus + " " + errorThrown);
 					}
 				});
 			}
